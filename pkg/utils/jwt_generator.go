@@ -6,15 +6,18 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt"
+	"github.com/joho/godotenv"
 )
 
 // GenerateNewAccessToken func for generate a new Access token.
 func GenerateNewAccessToken() (string, error) {
+	godotenv.Load(".env.local")
+
 	// Set secret key from .env file.
-	secret := os.Getenv("JWT_SECRET_KEY")
+	secret := os.Getenv("JWT_SECRET")
 
 	// Set expires minutes count for secret key from .env file.
-	minutesCount, _ := strconv.Atoi(os.Getenv("JWT_SECRET_KEY_EXPIRE_MINUTES_COUNT"))
+	minutesCount, _ := strconv.Atoi(os.Getenv("JWT_SECRET_KEY_EXPIRE_MINUTES_COUNT")) // hardcode ae kali ye minutesnye?
 
 	// Create a new claims.
 	claims := jwt.MapClaims{}

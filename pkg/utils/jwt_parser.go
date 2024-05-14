@@ -6,6 +6,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt"
+	"github.com/joho/godotenv"
 )
 
 // TokenMetadata struct to describe metadata in JWT.
@@ -58,5 +59,6 @@ func verifyToken(c *fiber.Ctx) (*jwt.Token, error) {
 }
 
 func jwtKeyFunc(token *jwt.Token) (interface{}, error) {
-	return []byte(os.Getenv("JWT_SECRET_KEY")), nil
+	godotenv.Load(".env.local")
+	return []byte(os.Getenv("JWT_SECRET")), nil
 }

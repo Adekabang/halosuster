@@ -12,7 +12,7 @@ import (
 // See: https://docs.gofiber.io/api/fiber#config
 func FiberConfig() fiber.Config {
 	// Define server settings.
-	readTimeoutSecondsCount, _ := strconv.Atoi(os.Getenv("SERVER_READ_TIMEOUT"))
+	readTimeoutSecondsCount, _ := strconv.Atoi(os.Getenv("SERVER_READ_TIMEOUT")) // ini hardcode kali ye? bebas dah terserah lu
 
 	// Return Fiber configuration.
 	return fiber.Config{
